@@ -81,7 +81,8 @@ stages:
         set -e
 
         # Write terraform.tfvars.
-        echo 'resource_group_location = "'$(ResourceGroupLocation)'"' | tee terraform.tfvars
+        echo 'provider = "azurerm" {version="=2.0.0" features {}}' | tee terraform.tfvars
+        echo 'resource_group_location = "'$(ResourceGroupLocation)'"' | tee -a terraform.tfvars
         # Write backend.tfvars.
         echo 'resource_group_name = "tf-storage-rg"' | tee backend.tfvars
         echo 'storage_account_name = "'$(StorageAccountName)'"' | tee -a backend.tfvars
