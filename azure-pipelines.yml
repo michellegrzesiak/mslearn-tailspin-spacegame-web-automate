@@ -81,7 +81,7 @@ stages:
         set -e
 
         # Write terraform.tfvars.
-        echo 'provider = '$(provider)' | tee terraform.tfvars
+        echo 'provider = $PROVIDER' | tee terraform.tfvars
         echo 'resource_group_location = "'$(ResourceGroupLocation)'"' | tee -a terraform.tfvars
         # Write backend.tfvars.
         echo 'resource_group_name = "tf-storage-rg"' | tee backend.tfvars
